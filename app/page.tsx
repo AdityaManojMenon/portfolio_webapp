@@ -79,7 +79,7 @@ export default function Home() {
   // Configuration for the chart
   const chartConfig = {
     experience: {
-      label: "Years of Experience",
+      label: "Years of Experience : ",
       color: "#ffffff", // White color for bars
     },
   } satisfies ChartConfig;
@@ -250,13 +250,13 @@ def train_model(df):
         
         {/* Experience section with skills chart */}
         <div className="relative">
-          {/* Skills Chart (Horizontal - Vertical Bars) - Adjusted Axes */}
+          {/* Skills Chart */}
           <div className="absolute left-0 top-1/4 w-80 h-80 opacity-70 hidden md:block"> 
             <ChartContainer config={chartConfig} className="w-full h-full">
               <BarChart 
                 accessibilityLayer 
                 data={skillsData}
-                layout="vertical" // Changed back to vertical layout for horizontal bars
+                layout="vertical" 
                 margin={{ left: -10, right: 10, top: 10, bottom: 10 }} // Adjusted margins for vertical layout
               >
                 <CartesianGrid horizontal={false} strokeDasharray="3 3" stroke="#555555" /> 
