@@ -14,7 +14,7 @@ export default function ProjectPage() {
           <Button 
             asChild 
             variant="outline" 
-            className="border-[#333333] text-[#ededed] bg-transparent hover:bg-[#222222]"
+            className="border-[#333333] text-[#ededed] bg-transparent hover:bg-[#222222] hover:text-[#888888]"
             size="sm"
           >
             <Link href="/#portfolio">
@@ -30,8 +30,8 @@ export default function ProjectPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-bold mb-2">AI Trip Planner</h1>
-          <p className="text-[#888888] mb-6">2023 | Machine Learning, User Experience, Travel</p>
+          <h1 className="text-4xl font-bold mb-2">Voyagen.ai</h1>
+          <p className="text-[#888888] mb-6">2025 | Machine Learning, User Experience, Travel</p>
           
           <div className="h-60 bg-[#111111] rounded-md mb-8 flex items-center justify-center">
             <p className="text-[#666666]">Project Image Placeholder</p>
@@ -98,30 +98,28 @@ export default function ProjectPage() {
               
               <div className="mb-4">
                 <h4 className="text-xs text-[#888888] mb-1">ROLE</h4>
-                <p className="text-sm">Lead Data Scientist</p>
+                <p className="text-sm">Co-Founder & Lead AI Engineer</p>
               </div>
               
               <div className="mb-4">
                 <h4 className="text-xs text-[#888888] mb-1">DURATION</h4>
-                <p className="text-sm">8 months</p>
+                <p className="text-sm">April 2025 - Present</p>
               </div>
               
               <div className="mb-4">
                 <h4 className="text-xs text-[#888888] mb-1">TEAM</h4>
-                <p className="text-sm">5 members (Data Scientists, UI/UX Designers, Full-stack Developers)</p>
+                <p className="text-sm">2 members (AI Engineer & Full-stack Developer)</p>
               </div>
               
               <div className="mb-4">
                 <h4 className="text-xs text-[#888888] mb-1">TECHNOLOGIES</h4>
                 <div className="flex flex-wrap gap-2 mt-2">
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">Python</span>
-                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">TensorFlow</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">React</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">Next.js</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">Node.js</span>
-                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">PostgreSQL</span>
-                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">MongoDB</span>
-                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">AWS</span>
+                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">Supabase</span>
+                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">Vercel</span>
                 </div>
               </div>
               

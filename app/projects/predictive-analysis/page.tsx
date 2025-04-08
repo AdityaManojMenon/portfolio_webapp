@@ -14,7 +14,7 @@ export default function ProjectPage() {
           <Button 
             asChild 
             variant="outline" 
-            className="border-[#333333] text-[#ededed] bg-transparent hover:bg-[#222222]"
+            className="border-[#333333] text-[#ededed] bg-transparent hover:bg-[#222222] hover:text-[#888888]"
             size="sm"
           >
             <Link href="/#portfolio">

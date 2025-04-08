@@ -20,7 +20,7 @@ import { motion } from "framer-motion";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
-  IconBrandTwitter,
+  IconBrandX,
   IconBrandInstagram,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
@@ -30,25 +30,32 @@ export default function Home() {
     {
       title: "GitHub",
       icon: <IconBrandGithub className="h-6 w-6 text-[#ededed]" />,
-      href: "https://github.com",
+      href: "https://github.com/AdityaManojMenon?tab=repositories",
     },
     {
       title: "Twitter",
-      icon: <IconBrandTwitter className="h-6 w-6 text-[#ededed]" />,
-      href: "https://twitter.com",
+      icon: <IconBrandX className="h-6 w-6 text-[#ededed]" />,
+      href: "https://x.com/AMFitt",
     },
-    
     {
       title: "Instagram",
       icon: <IconBrandInstagram className="h-6 w-6 text-[#ededed]" />,
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/fumz03/",
     },
     {
       title: "LinkedIn",
       icon: <IconBrandLinkedin className="h-6 w-6 text-[#ededed]" />,
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/adityamanojmenon/",
     },
   ];
+
+  const openResume = () => {
+    window.open(
+      "https://drive.google.com/file/d/13Mc4R2GPGTPRfJkK3RPlCEMe-BWKLFXo/view?usp=share_link",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-[#0a0a0a] text-[#ededed] p-6 md:p-10">
@@ -90,7 +97,7 @@ export default function Home() {
         <Button 
           asChild 
           variant="outline" 
-          className="rounded-full border-[#ededed] text-[#ededed] bg-transparent hover:bg-[#222222]"
+          className="rounded-full border-[#ededed] text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888]"
         >
           <Link href="#contact">CONTACT</Link>
         </Button>
@@ -127,6 +134,8 @@ export default function Home() {
             
             
             
+
+
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -152,15 +161,25 @@ def train_model(df):
     
     return model, accuracy`}
           </pre>
-          <div className="flex items-center mt-2">
+          {/* Added z-index so this button is clickable */}
+          <div className="flex items-center mt-2 relative z-50">
             <span className="text-[#cccccc] mr-2">return</span>
-            <Button 
-              asChild 
-              size="sm"
-              className="bg-[#333333] hover:bg-[#444444] text-[#ededed] px-3 py-1"
+            <button
+              onClick={() => window.open("https://drive.google.com/file/d/13Mc4R2GPGTPRfJkK3RPlCEMe-BWKLFXo/view?usp=share_link", "_blank")}
+              style={{
+                backgroundColor: '#333333',
+                color: 'white',
+                padding: '4px 12px',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '14px',
+              }}
+              onMouseOver={(e) => e.currentTarget.style.color = '#888888'}
+              onMouseOut={(e) => e.currentTarget.style.color = 'white'}
             >
-              <Link href="/resume.pdf" target="_blank">resume</Link>
-            </Button>
+              resume
+            </button>
           </div>
         </div>
         
@@ -184,7 +203,7 @@ def train_model(df):
             that leverages AI agents to help users seamlessly plan and 
             optimize their entire travel experience from itinerary creation 
             to real-time adjustments on the go.
-            As an aspiring machine learning engineer, I'm constantly exploring innovative 
+            As an aspiring machine learning engineer and founder, I'm constantly exploring innovative 
             ways to bridge data and intelligence. 
           </p>
         </motion.div>
@@ -214,36 +233,44 @@ def train_model(df):
             <h3 className="text-sm font-bold mb-4">EXPERIENCE</h3>
             <div className="space-y-4">
               <div className="border-l border-[#888888] pl-4">
-                <h4 className="font-medium text-sm">Data Scientist</h4>
-                <p className="text-xs text-[#888888]">Tech Startup • 2023 - Present</p>
+                <h4 className="font-medium text-sm">Co-Founder of Voyagen.ai</h4>
+                <p className="text-xs text-[#888888]">Tech Startup • 2025 - Present</p>
                 <p className="text-xs mt-2">
-                  Leading data analytics initiatives and building machine learning models 
-                  to optimize trip planning for users.
+                  Developing an AI-powered travel agent that 
+                  uses natural language processing and machine learning 
+                  to help users plan and budget their trips.
                 </p>
               </div>
               
               <div className="border-l border-[#888888] pl-4">
-                <h4 className="font-medium text-sm">Data Analyst</h4>
-                <p className="text-xs text-[#888888]">Research Institute • 2022 - 2023</p>
+                <h4 className="font-medium text-sm">Data Analyst at Board of Water and Light (Lansing)</h4>
+                <p className="text-xs text-[#888888]">Intership• May 2025 - August 2025</p>
                 <p className="text-xs mt-2">
-                  Analyzed large datasets to extract insights and presented findings
-                  to stakeholders.
+                  Upcoming
                 </p>
               </div>
               
               <div className="border-l border-[#888888] pl-4">
-                <h4 className="font-medium text-sm">Research Assistant</h4>
-                <p className="text-xs text-[#888888]">University • 2020 - 2022</p>
+                <h4 className="font-medium text-sm">Data Analyst at Adnoc Distribution</h4>
+                <p className="text-xs text-[#888888]">Internship • May 2024 - August 2024</p>
                 <p className="text-xs mt-2">
-                  Assisted in research projects, data collection, and analysis for
-                  academic publications.
+                  I analyzed large retail department datasets using SQL and 
+                  Python to uncover customer behavior and sales trends, and
+                  developed interactive Power BI dashboards to effectively
+                  present actionable insights to senior stakeholders.
+                </p>
+              </div>
+              
+              <div className="border-l border-[#888888] pl-4">
+                <h4 className="font-medium text-sm">Researcher at Wikicharties </h4>
+                <p className="text-xs text-[#888888]">Internship • May 2023 - August 2023</p>
+                <p className="text-xs mt-2">
+                  Conducted in-depth research and edited articles for the Journal of Nonprofit Innovation.
                 </p>
               </div>
             </div>
           </motion.div>
         </div>
-        
-        
         
         {/* Projects section */}
         <motion.div 
@@ -260,8 +287,8 @@ def train_model(df):
             <CarouselContent className="-ml-2 md:-ml-4">
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">AI Trip Planner</h4>
-                  <p className="text-xs text-[#888888] mb-2">2023</p>
+                  <h4 className="font-medium text-sm">Voyagen.ai</h4>
+                  <p className="text-xs text-[#888888] mb-2">2025</p>
                   <p className="text-xs flex-grow">
                     An application that uses AI to help users plan personalized trips based on
                     their preferences and constraints.
