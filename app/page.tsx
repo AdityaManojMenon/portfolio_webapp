@@ -24,6 +24,20 @@ import {
   IconBrandInstagram,
   IconBrandLinkedin,
 } from "@tabler/icons-react";
+import {
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar,
+} from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
 export default function Home() {
   const socialLinks = [
@@ -49,13 +63,25 @@ export default function Home() {
     },
   ];
 
-  const openResume = () => {
-    window.open(
-      "https://drive.google.com/file/d/13Mc4R2GPGTPRfJkK3RPlCEMe-BWKLFXo/view?usp=share_link",
-      "_blank",
-      "noopener,noreferrer"
-    );
-  };
+  // Data for the skills chart
+  const skillsData = [
+    { skill: "SQL", experience: 4 },
+    { skill: "Python", experience: 5 },
+    { skill: "R", experience: 3 },
+    { skill: "Tableau", experience: 2 },
+    { skill: "Power BI", experience: 3 },
+    { skill: "Excel", experience: 4 }, 
+    { skill: "Stats", experience: 3 },
+    { skill: "ML", experience: 3 }, 
+  ];
+
+  // Configuration for the chart
+  const chartConfig = {
+    experience: {
+      label: "Years of Experience",
+      color: "#ffffff", // White color for bars
+    },
+  } satisfies ChartConfig;
 
   return (
     <div className="flex flex-col min-h-screen bg-[#0a0a0a] text-[#ededed] p-6 md:p-10">
@@ -88,6 +114,17 @@ export default function Home() {
               <Link href="#interests" legacyBehavior passHref>
                 <NavigationMenuLink className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors">
                   Interests
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="https://drive.google.com/file/d/13Mc4R2GPGTPRfJkK3RPlCEMe-BWKLFXo/view?usp=share_link" legacyBehavior passHref>
+                <NavigationMenuLink 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors"
+                >
+                  Resume
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
@@ -134,8 +171,6 @@ export default function Home() {
             
             
             
-
-
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -161,26 +196,6 @@ def train_model(df):
     
     return model, accuracy`}
           </pre>
-          {/* Added z-index so this button is clickable */}
-          <div className="flex items-center mt-2 relative z-50">
-            <span className="text-[#cccccc] mr-2">return</span>
-            <button
-              onClick={() => window.open("https://drive.google.com/file/d/13Mc4R2GPGTPRfJkK3RPlCEMe-BWKLFXo/view?usp=share_link", "_blank")}
-              style={{
-                backgroundColor: '#333333',
-                color: 'white',
-                padding: '4px 12px',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.color = '#888888'}
-              onMouseOut={(e) => e.currentTarget.style.color = 'white'}
-            >
-              resume
-            </button>
-          </div>
         </div>
         
         {/* About section */}
@@ -194,7 +209,7 @@ def train_model(df):
         >
           <h3 className="text-sm font-bold mb-2">ABOUT</h3>
           <p className="text-sm leading-relaxed">
-            I am data analyst based in Michigan, USA with a passion for
+            I am a data analyst based in Michigan, USA with a passion for
             creating data-driven solutions. With a strong foundation in 
             statistics, data analysis, and data visualization, 
             I specialize in turning complex data into actionable 
@@ -208,18 +223,39 @@ def train_model(df):
           </p>
         </motion.div>
         
-        {/* Experience section with decorative elements */}
+        {/* Experience section with skills chart */}
         <div className="relative">
-          {/* Decorative formulas for Experience section */}
-          <div className="absolute left-0 top-1/3 opacity-25 font-serif text-xs max-w-xs hidden md:block">
-            <div className="text-[#aaaaaa]">
-              <p className="my-2">accuracy = (TP + TN) / (TP + TN + FP + FN)</p>
-              <p className="my-2">precision = TP / (TP + FP)</p>
-              <p className="my-2">recall = TP / (TP + FN)</p>
-              <p className="my-2">F1 = 2 * (precision * recall) / (precision + recall)</p>
-              <p className="my-2">MSE = (1/n) * Σ(y_i - ŷ_i)²</p>
-              <p className="my-2">RMSE = √[(1/n) * Σ(y_i - ŷ_i)²]</p>
-            </div>
+          {/* Skills Chart (Horizontal - Vertical Bars) - Adjusted Axes */}
+          <div className="absolute left-0 top-1/4 w-80 h-80 opacity-70 hidden md:block"> 
+            <ChartContainer config={chartConfig} className="w-full h-full">
+              <BarChart 
+                accessibilityLayer 
+                data={skillsData}
+                layout="vertical" // Changed back to vertical layout for horizontal bars
+                margin={{ left: -10, right: 10, top: 10, bottom: 10 }} // Adjusted margins for vertical layout
+              >
+                <CartesianGrid horizontal={false} strokeDasharray="3 3" stroke="#555555" /> 
+                <YAxis
+                  dataKey="skill" // Y-axis now shows skills
+                  type="category"
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fill: '#FFFFFF', fontSize: 12 }} // Ensure white fill for skills
+                  width={60} // Adjusted width for skill names
+                  interval={0} 
+                />
+                <XAxis 
+                  dataKey="experience" // X-axis now shows experience
+                  type="number"
+                  hide={true} // Keep X-axis line/labels hidden
+                />
+                <ChartTooltip
+                  cursor={{ fill: '#333333' }} 
+                  content={<ChartTooltipContent indicator="line" nameKey="experience" labelKey="skill" style={{ backgroundColor: '#1a1a1a', borderColor: '#444444' }} itemStyle={{ color: '#ededed' }} />} 
+                />
+                <Bar dataKey="experience" fill="var(--color-experience)" radius={3} barSize={12} /> 
+              </BarChart>
+            </ChartContainer>
           </div>
           
           <motion.div 
@@ -272,7 +308,7 @@ def train_model(df):
           </motion.div>
         </div>
         
-        {/* Projects section */}
+        {/* Projects section - Added two more projects */}
         <motion.div 
           id="portfolio" 
           className="w-full mt-8 mb-20"
@@ -285,6 +321,7 @@ def train_model(df):
           
           <Carousel className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">
+              {/* Existing Project 1 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
                   <h4 className="font-medium text-sm">Voyagen.ai</h4>
@@ -304,6 +341,7 @@ def train_model(df):
                 </div>
               </CarouselItem>
               
+              {/* Existing Project 2 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
                   <h4 className="font-medium text-sm">Data Visualization Dashboard</h4>
@@ -322,6 +360,7 @@ def train_model(df):
                 </div>
               </CarouselItem>
               
+              {/* Existing Project 3 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
                   <h4 className="font-medium text-sm">Predictive Analysis Model</h4>
@@ -339,6 +378,47 @@ def train_model(df):
                   </Button>
                 </div>
               </CarouselItem>
+
+              {/* New Project 4 */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
+                  <h4 className="font-medium text-sm">Customer Segmentation Analysis</h4>
+                  <p className="text-xs text-[#888888] mb-2">2024</p>
+                  <p className="text-xs flex-grow">
+                    Utilized clustering algorithms (K-Means) in Python to segment customers based on purchasing behavior for targeted marketing campaigns.
+                  </p>
+                  <Button 
+                    asChild
+                    variant="outline" 
+                    size="sm" 
+                    className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
+                  >
+                    {/* Placeholder link - replace if you create a page */}
+                    <Link href="/#portfolio">View Project</Link> 
+                  </Button>
+                </div>
+              </CarouselItem>
+
+              {/* New Project 5 */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
+                  <h4 className="font-medium text-sm">Sales Forecasting System</h4>
+                  <p className="text-xs text-[#888888] mb-2">2023</p>
+                  <p className="text-xs flex-grow">
+                    Developed a time-series forecasting model (ARIMA) to predict monthly sales figures with improved accuracy.
+                  </p>
+                  <Button 
+                    asChild
+                    variant="outline" 
+                    size="sm" 
+                    className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
+                  >
+                     {/* Placeholder link - replace if you create a page */}
+                    <Link href="/#portfolio">View Project</Link>
+                  </Button>
+                </div>
+              </CarouselItem>
+
             </CarouselContent>
             <CarouselPrevious className="left-0 bg-transparent border-[#333333] text-[#ededed] hover:bg-[#222222]" />
             <CarouselNext className="right-0 bg-transparent border-[#333333] text-[#ededed] hover:bg-[#222222]" />
