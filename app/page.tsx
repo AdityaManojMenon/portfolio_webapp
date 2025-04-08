@@ -333,7 +333,7 @@ def train_model(df):
           </motion.div>
         </div>
         
-        {/* Projects section - Added two more projects */}
+        {/* Projects section*/}
         <motion.div 
           id="portfolio" 
           className="w-full mt-8 mb-20"
@@ -457,13 +457,13 @@ def train_model(df):
           </motion.div>
           
           <motion.div
-            className="md:flex-1 flex justify-center items-center"
+            className="md:flex-1 flex justify-end items-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="w-full max-w-md mx-auto">
+            <div className="w-full max-w-md mx-auto md:mr-0">
               <ImageRotator 
                 images={hobbyImages}
                 interval={3000}
