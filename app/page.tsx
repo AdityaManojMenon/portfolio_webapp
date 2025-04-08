@@ -38,6 +38,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { ImageRotator } from "@/components/ui/image-rotator";
 
 export default function Home() {
   const socialLinks = [
@@ -82,6 +83,30 @@ export default function Home() {
       color: "#ffffff", // White color for bars
     },
   } satisfies ChartConfig;
+  
+  // Hobby images for the image rotator
+  const hobbyImages = [
+    {
+      src: "/chess.png",
+      alt: "Chess - My Mental Gym"
+    },
+    {
+      src: "/atv.png",
+      alt: "ATV - Off-road Adventures"
+    },
+    {
+      src: "/travel.png",
+      alt: "Traveling - Global Explorer"
+    },
+    {
+      src: "/gym.png",
+      alt: "Fitness - Staying Active"
+    },
+    {
+      src: "/surfing.png",
+      alt: "Surfing - Catching Waves"
+    }
+  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-[#0a0a0a] text-[#ededed] p-6 md:p-10">
@@ -336,7 +361,7 @@ def train_model(df):
                     size="sm" 
                     className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
                   >
-                    <Link href="/projects/ai-trip-planner">View Project</Link>
+                    <Link href="/projects/voyagen-ai">View Project</Link>
                   </Button>
                 </div>
               </CarouselItem>
@@ -344,10 +369,11 @@ def train_model(df):
               {/* Existing Project 2 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Data Visualization Dashboard</h4>
-                  <p className="text-xs text-[#888888] mb-2">2022</p>
+                  <h4 className="font-medium text-sm">Movie Recommendation System</h4>
+                  <p className="text-xs text-[#888888] mb-2">2024</p>
                   <p className="text-xs flex-grow">
-                    Interactive dashboard to visualize and analyze complex datasets for business intelligence.
+                    Created a movie recommendation system using kmeans clustering machine learning model and cosine similarity
+                    to recommend movies to users based on their preferences.                  
                   </p>
                   <Button 
                     asChild
@@ -355,7 +381,7 @@ def train_model(df):
                     size="sm" 
                     className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
                   >
-                    <Link href="/projects/data-visualization">View Project</Link>
+                    <Link href="/projects/movie-recommendation-system">View Project</Link>
                   </Button>
                 </div>
               </CarouselItem>
@@ -363,10 +389,11 @@ def train_model(df):
               {/* Existing Project 3 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Predictive Analysis Model</h4>
-                  <p className="text-xs text-[#888888] mb-2">2022</p>
+                  <h4 className="font-medium text-sm">Algorithmic Trading</h4>
+                  <p className="text-xs text-[#888888] mb-2">2024</p>
                   <p className="text-xs flex-grow">
-                    Machine learning model that predicts future trends based on historical data patterns.
+                    The project employs machine learning techniques, particularly unsupervised learning, 
+                    to extract insights from financial data, such as patterns and relationships that are not predefined.
                   </p>
                   <Button 
                     asChild
@@ -374,7 +401,7 @@ def train_model(df):
                     size="sm" 
                     className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
                   >
-                    <Link href="/projects/predictive-analysis">View Project</Link>
+                    <Link href="/projects/algorithmic-trading">View Project</Link>
                   </Button>
                 </div>
               </CarouselItem>
@@ -382,10 +409,11 @@ def train_model(df):
               {/* New Project 4 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Customer Segmentation Analysis</h4>
-                  <p className="text-xs text-[#888888] mb-2">2024</p>
+                  <h4 className="font-medium text-sm">Data Visualization</h4>
+                  <p className="text-xs text-[#888888] mb-2">2023</p>
                   <p className="text-xs flex-grow">
-                    Utilized clustering algorithms (K-Means) in Python to segment customers based on purchasing behavior for targeted marketing campaigns.
+                    The project focuses on tracking key performance indicators (KPIs), comparing regional performance, analyzing 
+                    product-level trends, and identifying high-value customers.
                   </p>
                   <Button 
                     asChild
@@ -394,27 +422,7 @@ def train_model(df):
                     className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
                   >
                     {/* Placeholder link - replace if you create a page */}
-                    <Link href="/#portfolio">View Project</Link> 
-                  </Button>
-                </div>
-              </CarouselItem>
-
-              {/* New Project 5 */}
-              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Sales Forecasting System</h4>
-                  <p className="text-xs text-[#888888] mb-2">2023</p>
-                  <p className="text-xs flex-grow">
-                    Developed a time-series forecasting model (ARIMA) to predict monthly sales figures with improved accuracy.
-                  </p>
-                  <Button 
-                    asChild
-                    variant="outline" 
-                    size="sm" 
-                    className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
-                  >
-                     {/* Placeholder link - replace if you create a page */}
-                    <Link href="/#portfolio">View Project</Link>
+                    <Link href="/projects/data-visualization">View Project</Link> 
                   </Button>
                 </div>
               </CarouselItem>
@@ -425,20 +433,45 @@ def train_model(df):
           </Carousel>
         </motion.div>
         
-        {/* Interests section */}
-        <motion.div 
-          id="interests"
-          className="md:max-w-md md:mr-auto mt-8 mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-sm font-bold mb-4">INTERESTS</h3>
-          <p className="text-sm">
-            I enjoy playing chess and soccer in my free time. More details about my interests will be added later.
-          </p>
-        </motion.div>
+        {/* Interests section and Hobby Images */}
+        <div className="flex flex-col md:flex-row justify-between gap-10 mt-8 mb-20">
+          <motion.div 
+            id="interests"
+            className="md:max-w-md md:flex-1"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-sm font-bold mb-4">INTERESTS</h3>
+            <div className="text-sm">
+              <ul className="list-disc pl-5 text-sm space-y-2">
+                <li>Playing Chess : This is my mental gym. I love playing fast paced chess game as it improves my sharpness and time management.</li>
+                <li>Playing Soccer : I love playing soccer as it helps me stay fit and active. I also love to watch soccer games.</li>
+                <li>ATV : I love to go on ATV rides in the mountains. It is a great way to enjoy nature and get some exercise.</li>
+                <li>Traveling : I love to travel and explore new places. Currently, been to over 20 countries (majorly in Europe and Asia).</li>
+                <li>Gymming : I love to gym as it helps me stay fit and active. I also love to watch gym videos and learn new exercises.</li>
+                <li>Surfing : I love to surf as it is a great way to enjoy nature and get some exercise.</li>
+              </ul>
+            </div>
+          </motion.div>
+          
+          <motion.div
+            className="md:flex-1 flex justify-center items-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="w-full max-w-md mx-auto">
+              <ImageRotator 
+                images={hobbyImages}
+                interval={3000}
+                className="shadow-xl"
+              />
+            </div>
+          </motion.div>
+        </div>
       </main>
 
       {/* Footer with Connect section */}

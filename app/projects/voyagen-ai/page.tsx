@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
 
 export default function ProjectPage() {
   return (
@@ -33,8 +34,14 @@ export default function ProjectPage() {
           <h1 className="text-4xl font-bold mb-2">Voyagen.ai</h1>
           <p className="text-[#888888] mb-6">2025 | Machine Learning, User Experience, Travel</p>
           
-          <div className="h-60 bg-[#111111] rounded-md mb-8 flex items-center justify-center">
-            <p className="text-[#666666]">Project Image Placeholder</p>
+          <div className="relative w-full h-60 rounded-md overflow-hidden mb-8">
+            <Image 
+              src="/voyagen.png" 
+              alt="Voyagen.ai"
+              layout="fill" 
+              objectFit="cover" 
+              className="bg-[#111111]"
+            />
           </div>
         </motion.div>
 
@@ -47,9 +54,10 @@ export default function ProjectPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h2 className="text-xl font-bold mb-4">Overview</h2>
+            <h3 className="text-md font-bold mb-4">Deploying soon thanks for patience!</h3> 
             <p className="text-sm mb-4 leading-relaxed">
-              The AI Trip Planner is an innovative application designed to revolutionize how users plan their trips. 
-              By leveraging advanced machine learning algorithms, natural language processing, and personalized 
+              Voyagen.ai is an innovative application designed to revolutionize how users plan their trips. 
+              By leveraging advanced machine learning, natural language processing, and personalized 
               recommendation systems, the platform creates customized travel itineraries based on user preferences, 
               constraints, and real-time data.
             </p>
@@ -64,14 +72,13 @@ export default function ProjectPage() {
             
             <h2 className="text-xl font-bold mb-4 mt-8">Solution</h2>
             <p className="text-sm mb-4 leading-relaxed">
-              Our AI Trip Planner addresses these challenges by implementing several key features:
+              Voyagen.ai addresses these challenges by implementing several key features:
             </p>
             <ul className="list-disc pl-5 text-sm space-y-2 mb-4">
               <li>Personalized Recommendation Engine: Analyzes user preferences, past travels, and feedback to suggest destinations and activities aligned with their interests.</li>
               <li>Natural Language Interaction: Allows users to describe their ideal trip in plain language, which our system interprets to create customized plans.</li>
               <li>Adaptive Itinerary Optimization: Continuously refines the travel plan based on real-time factors like weather, opening hours, crowd levels, and transportation availability.</li>
               <li>Budget Management: Helps users optimize their spending by suggesting alternatives and balancing costs across the entire trip.</li>
-              <li>Collaborative Planning: Enables groups to contribute preferences and vote on options, simplifying the group travel planning process.</li>
             </ul>
             
             <h2 className="text-xl font-bold mb-4 mt-8">Technical Implementation</h2>
@@ -79,10 +86,10 @@ export default function ProjectPage() {
               The application is built using a modern tech stack:
             </p>
             <ul className="list-disc pl-5 text-sm space-y-2">
-              <li>Frontend: React with Next.js for server-side rendering and SEO optimization</li>
-              <li>Backend: Node.js with Express, connected to PostgreSQL for structured data and MongoDB for unstructured data</li>
-              <li>Machine Learning: Python with TensorFlow and scikit-learn for recommendation engines and natural language processing</li>
-              <li>DevOps: Docker containers orchestrated with Kubernetes, deployed on AWS</li>
+              <li>Frontend: React with Next.js for server-side rendering and SEO optimization</li>op
+              <li>Backend: Python, connected to supabase for database and authentication </li>
+              <li>Machine Learning: Used openai and anthropic for LLMs and created custom rag pipeline for better results </li>
+              <li>DevOps: Docker containers orchestrated with Kubernetes, deployed on Vercxel</li>
               <li>APIs: Integration with various travel APIs for real-time data on flights, accommodations, attractions, and weather</li>
             </ul>
           </motion.div>
@@ -117,7 +124,7 @@ export default function ProjectPage() {
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">Python</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">React</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">Next.js</span>
-                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">Node.js</span>
+                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">OpenAI</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">Supabase</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">Vercel</span>
                 </div>
@@ -125,7 +132,8 @@ export default function ProjectPage() {
               
               <div>
                 <h4 className="text-xs text-[#888888] mb-1">OUTCOME</h4>
-                <p className="text-sm">Beta version launched with 5,000+ users and 92% satisfaction rate</p>
+                <p className="text-sm">We deployed the project and marketed it on social media platforms. 
+                  We received positive feedback from users and have plans to expand the project in the future.</p>
               </div>
             </div>
           </motion.div>
