@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aditya Menon | Data Scientist",
+  title: "Aditya Menon | AI & Data Engineer",
   description: "Personal Portfolio",
 };
 
