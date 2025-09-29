@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "next/image"; 
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -55,7 +55,7 @@ export default function Home() {
     {
       title: "Instagram",
       icon: <IconBrandInstagram className="h-6 w-6 text-[#ededed]" />,
-      href: "https://www.instagram.com/fumz03/",
+      href: "https://www.instagram.com/amfitt11/",
     },
     {
       title: "LinkedIn",
@@ -171,7 +171,7 @@ export default function Home() {
         <div className="py-12 md:py-20">
           <h2 className="text-[#888888] text-5xl md:text-9xl font-bold leading-none">
             DATA
-            <span className="block">ANALYST</span>
+            <span className="block">ENGINEER</span>
           </h2>
           
           {/* Subheading */}
@@ -234,17 +234,9 @@ def train_model(df):
         >
           <h3 className="text-sm font-bold mb-2">ABOUT</h3>
           <p className="text-sm leading-relaxed">
-            I am a data analyst based in Michigan, USA with a passion for
-            creating data-driven solutions. With a strong foundation in 
-            statistics, data analysis, and data visualization, 
-            I specialize in turning complex data into actionable 
-            insights and intuitive visual stories. 
-            Currently, I'm channeling my expertise into an exciting startup 
-            that leverages AI agents to help users seamlessly plan and 
-            optimize their entire travel experience from itinerary creation 
-            to real-time adjustments on the go.
-            As an aspiring machine learning engineer and founder, I'm constantly exploring innovative 
-            ways to bridge data and intelligence. 
+          I'm a Computer Science student at Michigan State University with a passion for building intelligent systems that solve real-world problems. Currently working as an AI Engineer at Magna International, I'm developing VR applications that democratize CAD modeling through natural language interfaces—making complex design tools accessible to everyone, regardless of technical expertise.
+          My journey in tech has taken me from analyzing big data pipelines to crafting AI-powered solutions that bridge the gap between human intent and machine execution. At Lansing Board of Water and Light, I automated workflows and built analytics dashboards that transformed how teams make decisions. Now, I'm applying those same principles to reimagine how people interact with design software.
+          I specialize in the intersection of AI, data engineering, and practical software development. Whether I'm architecting scalable backends, building recommendation systems, or scraping and analyzing property data across global markets, I'm driven by a simple question: How can technology make complex tasks feel effortless? 
           </p>
         </motion.div>
         
@@ -294,21 +286,20 @@ def train_model(df):
             <h3 className="text-sm font-bold mb-4">EXPERIENCE</h3>
             <div className="space-y-4">
               <div className="border-l border-[#888888] pl-4">
-                <h4 className="font-medium text-sm">Co-Founder of Voyagen.ai</h4>
-                <p className="text-xs text-[#888888]">Tech Startup • 2025 - Present</p>
-                <p className="text-xs mt-2">
-                  Developing an AI-powered travel agent that 
-                  uses natural language processing and machine learning 
-                  to help users plan and budget their trips.
-                </p>
+              <h4 className="font-medium text-sm">AI Engineer at Magna International Inc.</h4>
+              <p className="text-xs text-[#888888]">2025 - Present</p>
+              <p className="text-xs mt-2">
+                Building VR applications that enable natural language CAD modeling,
+                democratizing complex design workflows with AI-driven interfaces.
+              </p>
               </div>
               
               <div className="border-l border-[#888888] pl-4">
-                <h4 className="font-medium text-sm">Data Analyst at Board of Water and Light (Lansing)</h4>
-                <p className="text-xs text-[#888888]">Intership• May 2025 - August 2025</p>
-                <p className="text-xs mt-2">
-                  Upcoming
-                </p>
+              <h4 className="font-medium text-sm">Analytics Engineer at Lansing Board of Water and Light</h4>
+              <p className="text-xs text-[#888888]">Internship • May 2025 - August 2025</p>
+              <p className="text-xs mt-2">
+                Automated data entry to Mapcon using Power Automate and Excel macros on a schedule.
+              </p>
               </div>
               
               <div className="border-l border-[#888888] pl-4">
@@ -349,11 +340,10 @@ def train_model(df):
               {/* Existing Project 1 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Voyagen.ai</h4>
+                  <h4 className="font-medium text-sm">Real Estate Market Intelligence</h4>
                   <p className="text-xs text-[#888888] mb-2">2025</p>
                   <p className="text-xs flex-grow">
-                    An application that uses AI to help users plan personalized trips based on
-                    their preferences and constraints.
+                  Developed a scalable ELT system for property data, combining batch and streaming ingestion, automated quality testing, and cost-efficient warehouse design in BigQuery.
                   </p>
                   <Button 
                     asChild
@@ -361,7 +351,7 @@ def train_model(df):
                     size="sm" 
                     className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
                   >
-                    <Link href="/projects/voyagen-ai">View Project</Link>
+                    <Link href="/projects/real-estate">View Project</Link>
                   </Button>
                 </div>
               </CarouselItem>
