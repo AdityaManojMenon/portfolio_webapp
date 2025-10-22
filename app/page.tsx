@@ -143,7 +143,7 @@ export default function Home() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="https://drive.google.com/file/d/13Mc4R2GPGTPRfJkK3RPlCEMe-BWKLFXo/view?usp=share_link" legacyBehavior passHref>
+              <Link href="https://drive.google.com/file/d/1saYjyWqx_vKnB054tU1I_ZmmWLLe6sbm/view" legacyBehavior passHref>
                 <NavigationMenuLink 
                   target="_blank"
                   rel="noopener noreferrer"
