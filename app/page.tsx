@@ -122,36 +122,46 @@ export default function Home() {
           <NavigationMenuList className="bg-transparent">
             
             <NavigationMenuItem>
-              <Link href="#experience" legacyBehavior passHref>
-                <NavigationMenuLink className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors">
+              <NavigationMenuLink asChild>
+                <Link
+                  href="#experience"
+                  className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors"
+                >
                   Experience
-                </NavigationMenuLink>
-              </Link>
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#portfolio" legacyBehavior passHref>
-                <NavigationMenuLink className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors">
+              <NavigationMenuLink asChild>
+                <Link
+                  href="#portfolio"
+                  className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors"
+                >
                   Portfolio
-                </NavigationMenuLink>
-              </Link>
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#interests" legacyBehavior passHref>
-                <NavigationMenuLink className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors">
+              <NavigationMenuLink asChild>
+                <Link
+                  href="#interests"
+                  className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors"
+                >
                   Interests
-                </NavigationMenuLink>
-              </Link>
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="https://drive.google.com/file/d/1kzNPDebLzqQEfPo9UfrEWBIDxBXcIqCi/view?usp=sharing" legacyBehavior passHref>
-                <NavigationMenuLink 
+              <NavigationMenuLink asChild>
+                <Link
+                  href="https://drive.google.com/file/d/1kzNPDebLzqQEfPo9UfrEWBIDxBXcIqCi/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#ededed] bg-transparent hover:bg-transparent hover:text-[#888888] px-4 py-2 text-sm font-medium transition-colors"
                 >
                   Resume
-                </NavigationMenuLink>
-              </Link>
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
