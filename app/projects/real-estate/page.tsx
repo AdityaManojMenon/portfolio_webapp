@@ -31,8 +31,8 @@ export default function ProjectPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-bold mb-2">Real Estate Market Intelligence</h1>
-          <p className="text-[#888888] mb-6">2025 | ELT, Data Engineering, BigQuery</p>
+          <h1 className="text-4xl font-bold mb-2">Real Estate Market Intelligent Pipeline</h1>
+          <p className="text-[#888888] mb-6">Jul 2025 - Dec 2025 | ELT, Data Engineering, BigQuery</p>
           
           <div className="relative w-full h-60 rounded-md overflow-hidden mb-8">
             <Image 
@@ -107,17 +107,17 @@ export default function ProjectPage() {
               
               <div className="mb-4">
                 <h4 className="text-xs text-[#888888] mb-1">ROLE</h4>
-                <p className="text-sm">Analytics Engineer</p>
+                <p className="text-sm">Data Engineer</p>
               </div>
               
               <div className="mb-4">
                 <h4 className="text-xs text-[#888888] mb-1">DURATION</h4>
-                <p className="text-sm">2025</p>
+                <p className="text-sm">Jul 2025 - Dec 2025 </p>
               </div>
               
               <div className="mb-4">
                 <h4 className="text-xs text-[#888888] mb-1">TEAM</h4>
-                <p className="text-sm">1 member (Analytics Engineer)</p>
+                <p className="text-sm">1 member (Data Engineer)</p>
               </div>
               
               <div className="mb-4">
@@ -127,8 +127,8 @@ export default function ProjectPage() {
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">BigQuery</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">dbt</span>
                   <span className="text-xs bg-[#222222] px-2 py-1 rounded">Airflow</span>
-                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">Cloud Run</span>
-                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">Pub/Sub</span>
+                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">GCP</span>
+                  <span className="text-xs bg-[#222222] px-2 py-1 rounded">Scrapy</span>
                 </div>
               </div>
               

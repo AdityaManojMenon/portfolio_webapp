@@ -143,7 +143,7 @@ export default function Home() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="https://drive.google.com/file/d/1saYjyWqx_vKnB054tU1I_ZmmWLLe6sbm/view" legacyBehavior passHref>
+              <Link href="https://drive.google.com/file/d/1kzNPDebLzqQEfPo9UfrEWBIDxBXcIqCi/view?usp=sharing" legacyBehavior passHref>
                 <NavigationMenuLink 
                   target="_blank"
                   rel="noopener noreferrer"
@@ -176,14 +176,14 @@ export default function Home() {
           
           {/* Subheading */}
           <div className="text-xs md:text-sm mt-4">
-            <p>2023 - Present</p>
+            <p>2024 - Present</p>
           </div>
         </div>
         
         {/* Algorithm visualization positioned to the left of About section */}
         <div className="absolute left-6 md:left-10 top-[300px] opacity-40 font-mono text-xs">
           <pre className="text-[#cccccc]">
-            {`
+            {String.raw`
             
             
             
@@ -196,30 +196,33 @@ export default function Home() {
             
             
             
-import numpy as np
+import requests
+from datetime import datetime, timezone
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+from google.cloud import bigquery
 
-def train_model(df):
-    # Feature engineering
-    X = df.drop('target', axis=1)
-    y = df['target']
-    
-    # Split dataset
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42)
-    
-    # Train model
-    model = RandomForestClassifier(n_estimators=100)
-    model.fit(X_train, y_train)
-    
-    # Evaluate
-    y_pred = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    
-    return model, accuracy`}
+def ingest_properties():
+    # Extract: pull property listings from external API
+    resp = requests.get("https://api.example.com/properties", timeout=30)
+    resp.raise_for_status()
+    data = resp.json()
+    df = pd.json_normalize(data)
+
+    # Transform: rename, types, metadata
+    df.rename(columns={"priceUsd": "price_usd"}, inplace=True)
+    df["ingested_at"] = datetime.now(tz=timezone.utc).isoformat()
+    df["price_usd"] = pd.to_numeric(df["price_usd"], errors="coerce")
+
+    # Load: append to BigQuery partitioned table
+    client = bigquery.Client()
+    table_id = "my_project.analytics.properties_raw"
+    job = client.load_table_from_dataframe(
+        df,
+        table_id,
+        job_config=bigquery.LoadJobConfig(write_disposition="WRITE_APPEND"),
+    )
+    job.result()
+    return "loaded " + str(len(df)) + " rows"`}
           </pre>
         </div>
         
@@ -234,9 +237,11 @@ def train_model(df):
         >
           <h3 className="text-sm font-bold mb-2">ABOUT</h3>
           <p className="text-sm leading-relaxed">
-          I'm a Computer Science student at Michigan State University with a passion for building intelligent systems that solve real-world problems. Currently working as an AI Engineer at Magna International, I'm developing VR applications that democratize CAD modeling through natural language interfaces—making complex design tools accessible to everyone, regardless of technical expertise.
-          My journey in tech has taken me from analyzing big data pipelines to crafting AI-powered solutions that bridge the gap between human intent and machine execution. At Lansing Board of Water and Light, I automated workflows and built analytics dashboards that transformed how teams make decisions. Now, I'm applying those same principles to reimagine how people interact with design software.
-          I specialize in the intersection of AI, data engineering, and practical software development. Whether I'm architecting scalable backends, building recommendation systems, or scraping and analyzing property data across global markets, I'm driven by a simple question: How can technology make complex tasks feel effortless? 
+          I’m a Computer Science student at Michigan State University focused on data engineering and analytics at the intersection of finance, real estate, and technology.
+          My work centers on building scalable data pipelines, backend systems, and analytics platforms that transform complex, real-world data into reliable inputs for decision-making. I’ve worked across the full data lifecycle from ingestion and transformation to modeling and analytic on financial, operational, and large-scale datasets.
+          As the Backend Software Engineering Lead for an industry-sponsored capstone project with Magna International, I led the design of backend services for a VR platform integrating natural language interfaces with data-driven CAD workflows, focusing on system architecture, APIs, and reliability. Previously, at Lansing Board of Water & Light, I automated data workflows and built analytics dashboards to improve operational visibility and decision-making.
+          Beyond industry and academic roles, I’ve built CDC-style analytics pipelines, backfill-safe incremental systems, and property analytics workflows spanning global real-estate data. I’m particularly interested in how data engineering, machine learning, and software systems enable smarter financial and real-estate intelligence.
+          My goal is to build reliable data systems that power high-impact decisions in fintech, proptech, and data-driven technology companies.
           </p>
         </motion.div>
         
@@ -285,44 +290,43 @@ def train_model(df):
           >
             <h3 className="text-sm font-bold mb-4">EXPERIENCE</h3>
             <div className="space-y-4">
-              <div className="border-l border-[#888888] pl-4">
-              <h4 className="font-medium text-sm">AI Engineer at Magna International Inc.</h4>
-              <p className="text-xs text-[#888888]">2025 - Present</p>
-              <p className="text-xs mt-2">
-                Building VR applications that enable natural language CAD modeling,
-                democratizing complex design workflows with AI-driven interfaces.
-              </p>
-              </div>
               
               <div className="border-l border-[#888888] pl-4">
-              <h4 className="font-medium text-sm">Analytics Engineer at Lansing Board of Water and Light</h4>
-              <p className="text-xs text-[#888888]">Internship • May 2025 - August 2025</p>
-              <p className="text-xs mt-2">
-                Automated data entry to Mapcon using Power Automate and Excel macros on a schedule.
-              </p>
-              </div>
-              
-              <div className="border-l border-[#888888] pl-4">
-                <h4 className="font-medium text-sm">Data Analyst at Adnoc Distribution</h4>
-                <p className="text-xs text-[#888888]">Internship • May 2024 - August 2024</p>
+                <h4 className="font-medium text-sm">
+                  Backend Software Engineering Lead (Capstone) · Magna International
+                </h4>
+                <p className="text-xs text-[#888888]">2025 – Present</p>
                 <p className="text-xs mt-2">
-                  I analyzed large retail department datasets using SQL and 
-                  Python to uncover customer behavior and sales trends, and
-                  developed interactive Power BI dashboards to effectively
-                  present actionable insights to senior stakeholders.
+                  Led backend architecture and API design for a VR platform integrating natural-language
+                  interfaces with CAD workflows, focusing on reliability, data handling, and scalable services.
                 </p>
               </div>
-              
+
               <div className="border-l border-[#888888] pl-4">
-                <h4 className="font-medium text-sm">Researcher at Wikicharties </h4>
-                <p className="text-xs text-[#888888]">Internship • May 2023 - August 2023</p>
+                <h4 className="font-medium text-sm">
+                  Analytics Engineer · Lansing Board of Water & Light
+                </h4>
+                <p className="text-xs text-[#888888]">Internship • May 2025 – Aug 2025</p>
                 <p className="text-xs mt-2">
-                  Conducted in-depth research and edited articles for the Journal of Nonprofit Innovation.
+                  Automated and reconciled operational data across enterprise systems using Python and
+                  Power Platform tools, improving reporting reliability and reducing manual correction effort.
                 </p>
               </div>
+
+              <div className="border-l border-[#888888] pl-4">
+                <h4 className="font-medium text-sm">
+                  Data Engineer · ADNOC Distribution
+                </h4>
+                <p className="text-xs text-[#888888]">Internship • May 2024 – Aug 2024</p>
+                <p className="text-xs mt-2">
+                  Built analytics-ready tables and data models on Oracle Cloud data warehouses, developed Python-based data validation workflows, and delivered Power BI dashboards enabling cross-functional teams to monitor operational and performance KPIs.
+                </p>
+              </div>
+
             </div>
           </motion.div>
-        </div>
+          
+          </div>
         
         {/* Projects section*/}
         <motion.div 
@@ -340,8 +344,8 @@ def train_model(df):
               {/* Existing Project 1 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Real Estate Market Intelligence</h4>
-                  <p className="text-xs text-[#888888] mb-2">2025</p>
+                  <h4 className="font-medium text-sm">Real Estate Market Intelligence Pipeline</h4>
+                  <p className="text-xs text-[#888888] mb-2">Jul 2025 - Dec 2025</p>
                   <p className="text-xs flex-grow">
                   Developed a scalable ELT system for property data, combining batch and streaming ingestion, automated quality testing, and cost-efficient warehouse design in BigQuery.
                   </p>
@@ -356,14 +360,14 @@ def train_model(df):
                 </div>
               </CarouselItem>
               
-              {/* Existing Project 2 */}
+              {/* CDC Pipeline */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Movie Recommendation System</h4>
-                  <p className="text-xs text-[#888888] mb-2">2024</p>
+                  <h4 className="font-medium text-sm">Change Data Capture (CDC) Pipeline</h4>
+                  <p className="text-xs text-[#888888] mb-2">Nov 2025 - Present</p>
                   <p className="text-xs flex-grow">
-                    Created a movie recommendation system using kmeans clustering machine learning model and cosine similarity
-                    to recommend movies to users based on their preferences.                  
+                    Built a CDC pipeline to stream row-level changes from OLTP systems into the warehouse,
+                    enabling near-real-time analytics with idempotent upserts and schema-evolution handling.
                   </p>
                   <Button 
                     asChild
@@ -371,7 +375,27 @@ def train_model(df):
                     size="sm" 
                     className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
                   >
-                    <Link href="/projects/movie-recommendation-system">View Project</Link>
+                    <Link href="/projects/cdc-pipeline">View Project</Link>
+                  </Button>
+                </div>
+              </CarouselItem>
+
+              {/* Backfill-Safe Incremental Ingestion */}
+              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
+                  <h4 className="font-medium text-sm">Backfill‑Safe Incremental Ingestion</h4>
+                  <p className="text-xs text-[#888888] mb-2">Dec 2025 - Present</p>
+                  <p className="text-xs flex-grow">
+                    Designed an incremental loader with bookmark/watermark checkpoints, windowed backfills,
+                    and deduplication to ensure accuracy while minimizing compute costs.
+                  </p>
+                  <Button 
+                    asChild
+                    variant="outline" 
+                    size="sm" 
+                    className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
+                  >
+                    <Link href="/projects/incremental-ingestion">View Project</Link> 
                   </Button>
                 </div>
               </CarouselItem>
@@ -379,8 +403,8 @@ def train_model(df):
               {/* Existing Project 3 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                 <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Algorithmic Trading</h4>
-                  <p className="text-xs text-[#888888] mb-2">2024</p>
+                  <h4 className="font-medium text-sm">Algorithmic Trading System</h4>
+                  <p className="text-xs text-[#888888] mb-2">May 2024 - July 2024</p>
                   <p className="text-xs flex-grow">
                     The project employs machine learning techniques, particularly unsupervised learning, 
                     to extract insights from financial data, such as patterns and relationships that are not predefined.
@@ -392,27 +416,6 @@ def train_model(df):
                     className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
                   >
                     <Link href="/projects/algorithmic-trading">View Project</Link>
-                  </Button>
-                </div>
-              </CarouselItem>
-
-              {/* New Project 4 */}
-              <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="border border-[#333333] rounded-md p-4 h-48 flex flex-col">
-                  <h4 className="font-medium text-sm">Data Visualization</h4>
-                  <p className="text-xs text-[#888888] mb-2">2023</p>
-                  <p className="text-xs flex-grow">
-                    The project focuses on tracking key performance indicators (KPIs), comparing regional performance, analyzing 
-                    product-level trends, and identifying high-value customers.
-                  </p>
-                  <Button 
-                    asChild
-                    variant="outline" 
-                    size="sm" 
-                    className="mt-2 w-full border-[#333333] hover:bg-[#333333] bg-[#ededed] text-black hover:text-[#ededed]"
-                  >
-                    {/* Placeholder link - replace if you create a page */}
-                    <Link href="/projects/data-visualization">View Project</Link> 
                   </Button>
                 </div>
               </CarouselItem>
